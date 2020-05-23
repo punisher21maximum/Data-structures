@@ -18,7 +18,7 @@ void display(struct Node * head)
 	}
 }
 
-void insert(struct Node ** head, int data)
+void insert(struct Node ** head, int data, int insert_index)
 {
 	//temp node
 	struct Node * temp = NULL;
@@ -28,14 +28,29 @@ void insert(struct Node ** head, int data)
 	new_node=(struct Node *)malloc(sizeof(struct Node));	
 	new_node->data = data; new_node->next = NULL;
 	
-	//reach end
-	temp = (*head);
-	while(temp->next)//reach last
+
+	//at start : index == 0
+	if(insert_index==0)
 	{
-		temp=temp->next;
+		if( (*head)==NULL )
+		{
+			printf("\nlist is empty");
+		}
+		else
+		{
+			new_node->next = (*head);
+			(*head) = new_node;
+		}
 	}
 	
-	temp->next = new_node;
+	//reach end
+//	temp = (*head);
+//	while(temp->next)//reach last
+//	{
+//		temp=temp->next;
+//	}
+//	
+//	temp->next = new_node;
 	
 		
 }
@@ -59,8 +74,8 @@ int main()
 	third->data = 3;
 	third->next = NULL;
 	
-	insert(&head, 4);
-	insert(&head, 5);
+	insert(&head, 4, 0);
+	insert(&head, 5, 0);
 	display(head);
 	
 	return 0;
