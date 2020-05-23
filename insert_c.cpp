@@ -10,7 +10,7 @@ void display(struct Node * head)
 {
 	struct Node * temp;
 	temp = head;
-	
+	printf("\n");
 	while(temp)
 	{
 		printf("%d ", temp->data);
@@ -50,21 +50,36 @@ void insert(struct Node ** head, int data, int insert_index)
 		}
 		else
 		{
-			temp = (*head);
-			while(temp->next);
-				temp = temp->next;
-			temp->next = new_node;
+			temp=(*head);
+			while(temp->next)
+			{
+				temp=temp->next;
+			}	
+			temp->next=new_node;
 		}
 	}
-	//reach end
-//	temp = (*head);
-//	while(temp->next)//reach last
-//	{
-//		temp=temp->next;
-//	}
-//	
-//	temp->next = new_node;
-	
+	else if(insert_index>0)
+	{
+		temp = (*head);
+		
+		for(int i=0; i<insert_index-1; i++)
+		{
+			if(temp->next)
+				temp = temp->next;
+			else
+			{
+				printf("\nIndex greate than the list size. list size is : %d", i+1);
+				return;
+			}
+			
+		}
+		if(temp->next)//if true : temp is not last node
+			new_node->next = temp->next;
+		else
+			new_node->next = NULL;
+		temp->next = new_node;
+	}
+
 		
 }
 
@@ -89,6 +104,7 @@ int main()
 	
 	insert(&head, 4, 0);
 	insert(&head, 5, 0);
+	insert(&head, 99, -1);
 	display(head);
 	
 	return 0;
