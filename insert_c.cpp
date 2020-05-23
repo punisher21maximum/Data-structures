@@ -34,7 +34,7 @@ void insert(struct Node ** head, int data, int insert_index)
 	{
 		if( (*head)==NULL )
 		{
-			printf("\nlist is empty");
+			(*head) = new_node;
 		}
 		else
 		{
@@ -42,7 +42,20 @@ void insert(struct Node ** head, int data, int insert_index)
 			(*head) = new_node;
 		}
 	}
-	
+	else if(insert_index==-1)
+	{
+		if( (*head)==NULL )
+		{
+			(*head) = new_node;
+		}
+		else
+		{
+			temp = (*head);
+			while(temp->next);
+				temp = temp->next;
+			temp->next = new_node;
+		}
+	}
 	//reach end
 //	temp = (*head);
 //	while(temp->next)//reach last
