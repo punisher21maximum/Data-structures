@@ -85,26 +85,30 @@ void insert(struct Node ** head, int data, int insert_index)
 
 int main()
 {
-	struct Node * head = NULL;
-	struct Node * second = NULL;
-	struct Node * third = NULL;
+//	struct Node * head = NULL;
+//	struct Node * second = NULL;
+//	struct Node * third = NULL;
 		
-	head = (struct Node *)malloc(sizeof(struct Node));
-	second = (struct Node *)malloc(sizeof(struct Node));
-	third = (struct Node *)malloc(sizeof(struct Node));
+//	head = (struct Node *)malloc(sizeof(struct Node));
+//	second = (struct Node *)malloc(sizeof(struct Node));
+//	third = (struct Node *)malloc(sizeof(struct Node));
 	
-	head->data = 1;
-	head->next = second;
+//	head->data = 1;
+//	head->next = second;
+//	
+//	second->data = 2;
+//	second->next = third;
+//	
+//	third->data = 3;
+//	third->next = NULL;
+
+	struct Node * head = NULL;
+	display(head);
 	
-	second->data = 2;
-	second->next = third;
-	
-	third->data = 3;
-	third->next = NULL;
-	
-	insert(&head, 4, 0);
-	insert(&head, 5, 0);
-	insert(&head, 99, -1);
+	for(int i=0; i<10; i++)
+	{
+		insert(&head, i, -1);
+	}
 	display(head);
 	
 	return 0;
