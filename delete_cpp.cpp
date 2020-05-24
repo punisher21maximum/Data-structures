@@ -1,35 +1,34 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include<iostream>
+#include <cstdlib>
+using namespace std;
 
-struct Node {
-	int data;
-	struct Node * next;	
+class Node{
+	public:
+		int data;
+		Node * next;
 };
 
-void display(struct Node * head)
+void display(Node * head)
 {
-	struct Node * temp;
-	temp = head;
-	printf("\n");
+	Node * temp = new Node();
+	
+	temp=head;
 	while(temp)
 	{
-		printf("%d ", temp->data);
-		temp=temp->next;
+		cout<<temp->data<<" ";
+		temp = temp->next;
 	}
 }
 
-void insert(struct Node ** head, int data, int insert_index)
+void insert(Node ** head, int data, int insert_index)
 {
 	//temp node
-	struct Node * temp = NULL;
-	temp=(struct Node *)malloc(sizeof(struct Node));
-	//new node 
-	struct Node * new_node = NULL;
-	new_node=(struct Node *)malloc(sizeof(struct Node));	
-	new_node->data = data; new_node->next = NULL;
+	Node * temp = new Node();
+	//new node
+	Node * new_node = new Node();
+	new_node->data = data;
+	new_node->next = NULL;
 	
-
-	//at start : index == 0
 	if(insert_index==0)
 	{
 		if( (*head)==NULL )
@@ -50,13 +49,11 @@ void insert(struct Node ** head, int data, int insert_index)
 		}
 		else
 		{
-			temp=(*head);
+			temp = (*head);
 			while(temp->next)
-			{
-				temp=temp->next;
-			}	
-			temp->next=new_node;
-		}
+				temp = temp->next;
+			temp->next = new_node;
+		}		
 	}
 	else if(insert_index>0)
 	{
@@ -79,14 +76,17 @@ void insert(struct Node ** head, int data, int insert_index)
 			new_node->next = NULL;
 		temp->next = new_node;
 	}
-
-		
+	else
+	{
+		printf("\nEnter index : greater than -1");
+	}
+	
 }
 
-void del_by_index(struct Node ** head, int del_index)
+void del(struct Node ** head, int del_index)
 {
 	//temp
-	struct Node * temp = (struct Node *)malloc(sizeof(struct Node));
+	Node * temp = new Node();
 	
 	if((*head)==NULL)
 	{
@@ -141,7 +141,7 @@ void del_by_index(struct Node ** head, int del_index)
 
 void del_by_val(struct Node ** head, int data)
 {
-	struct Node * temp = (struct Node *)malloc(sizeof(struct Node));
+	Node * temp = new Node();
 	
 	if((*head)==NULL)
 	{
@@ -173,8 +173,8 @@ void del_by_val(struct Node ** head, int data)
 
 void del_list(struct Node ** head)
 {
-	struct Node * temp = (*head);
-	struct Node * next_node;
+	Node * temp = (*head);
+	Node * next_node;
 	
 	while(temp)
 	{
@@ -188,44 +188,34 @@ void del_list(struct Node ** head)
 
 int main()
 {
-//	struct Node * head = NULL;
-//	struct Node * second = NULL;
-//	struct Node * third = NULL;
-		
-//	head = (struct Node *)malloc(sizeof(struct Node));
-//	second = (struct Node *)malloc(sizeof(struct Node));
-//	third = (struct Node *)malloc(sizeof(struct Node));
+	Node * head = NULL;
+	Node * second = NULL;
+	Node * third = NULL;
 	
-//	head->data = 1;
-//	head->next = second;
-//	
-//	second->data = 2;
-//	second->next = third;
-//	
-//	third->data = 3;
-//	third->next = NULL;
-
-	struct Node * head = NULL;
-	display(head);
+	head = new Node();
+	second = new Node();
+	third = new Node();
 	
-	for(int i=0; i<10; i++)
-	{
-		insert(&head, i, -1);
-	}
-//	display(head);
-//	del(&head, 0);
-//	display(head);
-//	del(&head, 0);
-//	display(head);
-//	del(&head, 0);
-//	display(head);
-//	del(&head, -1);
-//	del(&head, 3);
-	display(head);
-	del_by_index(&head, 0);
-	del_by_val(&head, 5);
-	display(head);
- 
+	head->data = 1; head->next=second;
+	second->data = 2; second->next=third;
+	third->data=3; third->next=NULL;
 	
+//	for(int i=0; i<10; i++)
+//	{
+//		insert(&head, i, -1);
+//	}
+//	for(int i=0; i<10; i++)
+//	{
+//		insert(&head, i+100, 0);
+//	}
+//	for(int i=0; i<10; i++)
+//	{
+//		insert(&head, i+200, i);
+//	}
+	display(head);
+	printf("\n");
+//	del(&head, 1);
+	del_by_val(&head, 4);
+	display(head);
 	return 0;
 }
