@@ -1,0 +1,6 @@
+string to int] 
+    int atoi(char * arr[]) //atof
+dec to bin]
+    char res[100];
+    itoa(49, res, 2);
+

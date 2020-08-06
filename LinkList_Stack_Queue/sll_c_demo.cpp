@@ -25,5 +25,8 @@ int main()
 	third->data = 3;
 	third->next = NULL;
 	
+	printf("%d", sizeof(int));
+	printf("\n%d", sizeof(head));
+
 	return 0;
 }

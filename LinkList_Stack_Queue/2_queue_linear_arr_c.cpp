@@ -40,10 +40,8 @@ void  enqueue(int data)
 {
     if( isFullQ() == false )
     {
-        if( isEmptyQ() == true )
-        {
+        if(isEmptyQ())
             front = 0;
-        }
         queue_arr[++rear] = data;
         display();
     }

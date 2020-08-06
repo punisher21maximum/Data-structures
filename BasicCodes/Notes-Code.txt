@@ -1,0 +1,30 @@
+reverse]
+        void rev_num(int N)
+        {
+            int rev=N%10; N/=10;
+            while(N)
+            {
+                rev = rev*10 + N%10;
+                N/=10;
+            }
+        }
+dec2bin]
+        void dec2bin(int D)
+        {
+            int bin = D%2; D/=10;
+            while(D)
+            {
+                bin = bin*10 + D%2; D/=10;
+            }
+            bin = rev_num(bin);
+        }
+
+The left-shift and right-shift operators are equivalent to 
+multiplication and division by 2 respectively. 
+        int main() 
+        { 
+            int x = 19; 
+            printf("x << 1 = %d\n", x << 1); 
+            printf("x >> 1 = %d\n", x >> 1); 
+            return 0; 
+        } 
